@@ -31,8 +31,9 @@
 						<div class="hero-text-tablecell">
 							<p class="subtitle">Fresh & Organic</p>
 							<h1>Delicious Seasonal Fruits</h1>
+							<img src="{% static 'assets/img/hero-bg.png' %}" alt="">
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Fruit Collection</a>
+								<a href="{% url 'core:shop' %}" class="boxed-btn">Fruit Collection</a>
 								<a href="{% url 'core:contact' %}" class="bordered-btn">Contact Us</a>
 							</div>
 						</div>
@@ -100,36 +101,18 @@
 			</div>
 
 			<div class="row">
+				{% for product in products %}
 				<div class="col-lg-4 col-md-6 text-center">
 					<div class="single-product-item">
 						<div class="product-image">
-							<a href="single-product.html"><img src="{% static 'assets/img/products/product-img-1.jpg' %}" alt=""></a>
+							<a href="{% url 'core:single_product' pid=product.id %}"><img src="{{ product.image.url }}" alt="" style="width: 100%; height: 100% ;"></a>
 						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<h3>{{ product.title }}</h3>
+						<p class="product-price"><span>Per Kg</span> {{ product.price }}$ </p>
+						<a href="{% url 'core:cart' %}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="{% static 'assets/img/products/product-img-2.jpg' %}" alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="{% static 'assets/img/products/product-img-3.jpg' %}" alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
@@ -159,7 +142,7 @@
                     <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
                     <!--Countdown Timer-->
                     <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
-                	<a href="cart.html" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                	<a href="{% url 'core:cart' %}" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -226,9 +209,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<div class="abt-bg">
-						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
-					</div>
+					
+						<img src="{% static 'assets/img/ai1.png' %}" alt="" style="width: 100%; height: 100%;">
+					
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-text">
@@ -249,7 +232,7 @@
     	<div class="container">
         	<h3>December sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
             <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
-            <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>
+            <a href="{% url 'core:shop' %}" class="cart-btn btn-lg">Shop Now</a>
         </div>
     </section>
 	<!-- end shop banner -->
@@ -272,7 +255,7 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						<a href="{% url 'blog:single_blog' pid=post.id %}"><div class="latest-news-bg news-bg-1">
-							<img src="{{ post.image.url}}" alt="">
+							<img src="{{ post.image.url}}" alt="" style="width: 100%; height: 100%">
 						</div></a>
 						<div class="news-text-box">
 							<h3><a href="{% url 'blog:single_blog' pid=post.id %}">{{ post.title }}</a></h3>
@@ -290,7 +273,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<a href="news.html" class="boxed-btn">More News</a>
+					<a href="{% url 'blog:blog' %}" class="boxed-btn">More News</a>
 				</div>
 			</div>
 		</div>
