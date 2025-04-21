@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from blog.models import Post
 from .models import Product,Team
+from .forms import contactForm,subscribe
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 
 def index_view(request,**kwargs):
     posts=Post.objects.filter(status=1 ,published_date__lte=timezone.now()).order_by('-published_date')[:3]
@@ -24,6 +26,10 @@ def about_view(request):
     return render(request, 'core/about.html',context)
 
 def contact_view(request):
+    if request.method == 'POST':
+        form = contactForm(request.POST)
+        if form.is_valid():
+            form.save()
     return render(request, 'core/contact.html')
 
 def notfound_view(request):
@@ -47,6 +53,12 @@ def single_product_view(request,pid):
     }
     return render(request, 'core/single-product.html',context)
 
+def subscribe_view(request):
+    if request.method == 'POST':
+        form = subscribe(request.POST)
+        if form.is_valid():
+            form.save()
+    return HttpResponseRedirect('/')
 
 
 

@@ -18,7 +18,7 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
     
-class Newsletter(models.Model):
+class Subscribe(models.Model):
     email = models.EmailField(max_length=255)
 
     def __str__(self):
