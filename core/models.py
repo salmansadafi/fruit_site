@@ -36,3 +36,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Team(models.Model):
+    image = models.ImageField(upload_to='team',null=True,blank=True)
+    name = models.CharField(max_length=255)
+    role = models.CharField(max_length=255)
+    created_date = models.DateTimeField(auto_now_add=True)
+    updated_date = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name

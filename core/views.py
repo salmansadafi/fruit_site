@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from blog.models import Post
-from .models import Product
+from .models import Product,Team
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 
@@ -17,7 +17,11 @@ def index_view(request,**kwargs):
     return render(request, 'core/index.html',context)
 
 def about_view(request):
-    return render(request, 'core/about.html')
+    teams=Team.objects.all()
+    context = {
+        'teams': teams
+    }
+    return render(request, 'core/about.html',context)
 
 def contact_view(request):
     return render(request, 'core/contact.html')

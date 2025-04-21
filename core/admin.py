@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Contact,Newsletter,Product
+from core.models import Contact,Newsletter,Product,Team
 # Register your models here.
 
 
@@ -22,3 +22,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Contact,ContactAdmin)
 admin.site.register(Newsletter)
 admin.site.register(Product,ProductAdmin)
+admin.site.register(Team)
