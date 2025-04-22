@@ -30,7 +30,8 @@ def contact_view(request):
         form = contactForm(request.POST)
         if form.is_valid():
             form.save()
-    return render(request, 'core/contact.html')
+    form = contactForm()
+    return render(request, 'core/contact.html', {'form': form})
 
 def notfound_view(request):
     return render(request, 'core/404.html')
