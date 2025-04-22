@@ -35,7 +35,7 @@ class Post(models.Model):
         return "{} - {}".format(self.title, self.content)
     
     def get_absolute_url(self):
-        return reverse("blog:single", kwargs={"pid": self.id})
+        return reverse("blog:single_blog", kwargs={"pid": self.id})
     
 
 class Comment(models.Model):
