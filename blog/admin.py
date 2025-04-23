@@ -13,9 +13,9 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'content']  # Adds a search box to the admin list view
 
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'subject', 'created_date', 'approved')
+    list_display = ('name', 'created_date', 'approved')
     list_filter = ('approved', 'created_date')
-    search_fields = ('name', 'subject', 'message')
+    search_fields = ('name', 'message')
 
 admin.site.register(Post,PostAdmin) #--> @admin.register(Post)
 #admin.site.register(Category)
