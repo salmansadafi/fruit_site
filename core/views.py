@@ -5,6 +5,7 @@ from .forms import contactForm,subscribe
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 def index_view(request,**kwargs):
     posts=Post.objects.filter(status=1 ,published_date__lte=timezone.now()).order_by('-published_date')[:3]
@@ -30,6 +31,9 @@ def contact_view(request):
         form = contactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Message sent successfully.')
+        else:
+            messages.error(request, 'Message not sent.')
     form = contactForm()
     return render(request, 'core/contact.html', {'form': form})
 
@@ -59,6 +63,9 @@ def subscribe_view(request):
         form = subscribe(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Subscribed successfully.')
+        else:
+            messages.error(request, 'Not subscribed.')
     return HttpResponseRedirect('/')
 
 

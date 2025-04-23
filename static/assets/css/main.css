@@ -475,7 +475,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .breadcrumb-bg {
-  background-image: url(../img/breadcrumb-bg.jpg);
+  background-image: url(../img/ai2.png);
 }
 
 .breadcrumb-text p {
@@ -2102,7 +2102,7 @@ a.video-play-btn {
 }
 
 .abt-bg {
-  background-image: url(../img/abt.jpg);
+  background-image: url(../img/ai2.png);
   height: 100%;
   width: 100%;
   background-size: cover;
@@ -2194,7 +2194,7 @@ a.video-play-btn {
 }
 
 .feature-bg:after {
-  background-image: url(../img/feature-bg.jpg);
+  background-image: url(../img/ai2.png);
   position: absolute;
   right: 0;
   top: 0;

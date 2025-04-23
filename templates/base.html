@@ -56,6 +56,18 @@
 						<div class="site-logo">
 							<a href="{% url 'core:index' %}">
 								<img src="{% static 'assets/img/logo.png' %}" alt="">
+								<br><br>
+								{% if user.is_authenticated %}
+									<ul style="display: flex;">
+                            		<li><a href="#" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; margin: 10px; ">{{request.user.username}}</a></li>
+                            		<li><a href="{% url 'accounts:logout' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; " >Logout</a></li>
+									</ul>
+									{% else %}
+									<ul style="display: flex;">
+                            		<li><a href="{% url 'accounts:login' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; margin: 10px; ">Login</a></li>
+                            		<li><a href="{% url 'accounts:signup' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; margin: 10px; ">Signup</a></li>
+									</ul>
+                            	{% endif %}
 							</a>
 						</div>
 						<!-- logo -->
@@ -91,6 +103,29 @@
 			</div>
 		</div>
 	</div>
+		{% if messages %}
+            <div class="messages-container" style="position: fixed; top: 100px; left: 20px; z-index: 1050; width: 300px;">
+                {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} 
+                    alert-dismissible fade show custom-alert" role="alert" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); border-radius: 8px; padding: 15px;">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    setTimeout(function() {
+                        document.querySelectorAll(".custom-alert").forEach(function(alert) {
+                            alert.classList.remove("show");
+                            setTimeout(() => alert.remove(), 500);
+                        });
+                    }, 5000); 
+                });
+            </script>
+        {% endif %}
 	<!-- end header -->
 
 
