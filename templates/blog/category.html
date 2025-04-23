@@ -1,0 +1,11 @@
+{% load static %}
+
+
+<div class="cat-section">
+    <h4>Categories</h4>
+    <ul>
+        {% for cat in post.category.all %}
+        <li><a href="{% url 'blog:category' cat.name %}">{{cat.name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>

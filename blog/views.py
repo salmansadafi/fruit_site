@@ -43,3 +43,13 @@ def single_blog_view(request, pid):
         
     }
     return render(request, 'blog/single-blog.html', context)
+
+def search_view(request):
+    posts=Post.objects.filter(status=1 ,published_date__lte=timezone.now())
+    if request.method == 'GET':
+        if s:= request.GET.get('s'):
+            posts = posts.filter(title__contains=s)
+    context = {
+        'posts': posts
+    }
+    return render(request, 'blog/blog.html', context)

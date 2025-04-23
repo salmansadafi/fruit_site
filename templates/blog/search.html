@@ -1,0 +1,10 @@
+{% load static %}
+	<!-- search area -->
+	<form class="search-area" method="get" action="{% url 'blog:search' %}">
+        <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" name="s" placeholder="Keywords">
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+        </div>
+    </form>
+	<!-- end search arewa -->

@@ -9,6 +9,7 @@ urlpatterns = [
     path('category/<str:category>', blog_view, name='category'),
     path('tag/<str:tag>', blog_view, name='tag'),
     path('author/<str:author>', blog_view, name='author'),
+    path('search/', search_view, name='search'),
     
 
 ]
