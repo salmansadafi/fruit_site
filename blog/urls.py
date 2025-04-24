@@ -1,5 +1,6 @@
 from django.urls import path
 from blog.views import *
+from .feeds import RssTutorialsFeeds
 
 app_name = 'blog'
 
@@ -10,6 +11,7 @@ urlpatterns = [
     path('tag/<str:tag>', blog_view, name='tag'),
     path('author/<str:author>', blog_view, name='author'),
     path('search/', search_view, name='search'),
+    path('rss/feed', RssTutorialsFeeds(), name="tutorial_feed"),
     
 
 ]

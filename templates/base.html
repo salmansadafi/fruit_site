@@ -53,29 +53,47 @@
 				<div class="col-lg-12 col-sm-12 text-center">
 					<div class="main-menu-wrap">
 						<!-- logo -->
-						<div class="site-logo">
-							<a href="{% url 'core:index' %}">
-								<img src="{% static 'assets/img/logo.png' %}" alt="">
-								<br><br>
-								{% if user.is_authenticated %}
-									<ul style="display: flex;">
-                            		<li><a href="#" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; margin: 10px; ">{{request.user.username}}</a></li>
-                            		<li><a href="{% url 'accounts:logout' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; " >Logout</a></li>
-									</ul>
-									{% else %}
-									<ul style="display: flex;">
-                            		<li><a href="{% url 'accounts:login' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; margin: 10px; ">Login</a></li>
-                            		<li><a href="{% url 'accounts:signup' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px; font-weight: bold; font-size: 15px; margin: 10px; ">Signup</a></li>
-									</ul>
-                            	{% endif %}
-							</a>
-						</div>
+						<div class="site-logo" style="display: flex; align-items: center; gap: 10px;">
+                            <a href="{% url 'core:index' %}">
+                                <img src="{% static 'assets/img/logo.png' %}" alt="لوگو">
+
+                            </a>
+                            
+                            {% if user.is_authenticated %}
+                                <ul style="display: flex; list-style: none; padding: 0; margin: 0;">
+                                    <li>
+                                        <a href="#" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px 10px; font-weight: bold; font-size: 15px; margin-right: 10px;">
+                                            {{ request.user.username }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'accounts:logout' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px 10px; font-weight: bold; font-size: 15px;">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            {% else %}
+                                <ul style="display: flex; list-style: none; padding: 0; margin: 0;">
+                                    <li>
+                                        <a href="{% url 'accounts:login' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px 10px; font-weight: bold; font-size: 15px; margin-right: 10px;">
+                                            Login
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'accounts:signup' %}" style="color: black; background-color: aliceblue; border-radius: 10px; padding: 5px 10px; font-weight: bold; font-size: 15px;">
+                                            Signup
+                                        </a>
+                                    </li>
+                                </ul>
+                            {% endif %}
+                        </div>
+                        
 						<!-- logo -->
 
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="{% url 'core:index' %}">Home</a>
+								<li><a href="{% url 'core:index' %}">Home</a>
 									
 								</li>
 								<li><a href="{% url 'core:about' %}">About</a></li>
