@@ -7,6 +7,7 @@ DEBUG = True
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///dummy.db')
 }
+SITE_ID = 2
 
 ALLOWED_HOSTS = ['*']
 
