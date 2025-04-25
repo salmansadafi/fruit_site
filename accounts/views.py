@@ -35,10 +35,12 @@ def login_view(request):
                 messages.success(request,'Logged in successfully')
                 username_or_email=form.cleaned_data.get('username')
                 password=form.cleaned_data.get('password')
+                print("Login input:", username_or_email)
 
                 try:
                     user_obj = User.objects.get(Q(username=username_or_email) | Q(email=username_or_email))
                     username = user_obj.username  # دریافت یوزرنیم معادل ایمیل
+                    print("Login input:", username_or_email)
                 except User.DoesNotExist:
                     username = username_or_email
                 user=authenticate(request,username=username,password=password)
@@ -46,6 +48,7 @@ def login_view(request):
 
                 if user is not None:
                     login(request,user)
+                    print("Login input:", username_or_email)
                     return redirect('/')
                 
             else:
