@@ -37,7 +37,7 @@ def login_view(request):
                 password=form.cleaned_data.get('password')
 
                 try:
-                    user_obj = User.objects.get(Q(username=username_or_email) | Q(email=username_or_email))
+                    user_obj = User.objects.filter(Q(username=username_or_email) | Q(email=username_or_email)).first()
                     username = user_obj.username  # دریافت یوزرنیم معادل ایمیل
                 except User.DoesNotExist:
                     username = username_or_email
