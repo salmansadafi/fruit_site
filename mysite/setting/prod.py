@@ -2,7 +2,7 @@ from mysite.settings import *
 import os
 import dj_database_url
 
-DEBUG = True
+DEBUG =  False
 
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///dummy.db')
