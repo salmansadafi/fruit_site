@@ -37,14 +37,17 @@ def login_view(request):
                 password=form.cleaned_data.get('password')
 
                 try:
-                    user_obj = User.objects.filter(Q(username=username_or_email) | Q(email=username_or_email)).first()
+                    user_obj = User.objects.get(Q(username=username_or_email) | Q(email=username_or_email))
                     username = user_obj.username  # دریافت یوزرنیم معادل ایمیل
                 except User.DoesNotExist:
                     username = username_or_email
                 user=authenticate(request,username=username,password=password)
+                print("Login input:", username_or_email)
+
                 if user is not None:
                     login(request,user)
                     return redirect('/')
+                
             else:
                 messages.error(request,'Error, invalid username or password')
         form=AuthenticationForm()
