@@ -14,6 +14,6 @@ urlpatterns = [
     path('single-product/<int:pid>', single_product_view, name='single_product'),
     path('category/<str:category>', index_view, name='category'),
     path('subscribe/', subscribe_view, name='subscribe'),
-    
+
 ]
-handler404 = notfound_view
+handler404 = 'core.views.notfound_view'
