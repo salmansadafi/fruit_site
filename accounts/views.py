@@ -7,7 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm,UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm,CustomAuthenticationForm
 from django.contrib import messages
 
 # Create your views here.
@@ -30,7 +30,7 @@ def signup_view(request):
 def login_view(request):
     if request.user.is_anonymous:
         if request.method == 'POST':
-            form=AuthenticationForm(request,data=request.POST)
+            form=CustomAuthenticationForm(request,data=request.POST)
             if form.is_valid():
                 messages.success(request,'Logged in successfully')
                 username_or_email=form.cleaned_data.get('username')
