@@ -16,3 +16,4 @@ urlpatterns = [
     path('subscribe/', subscribe_view, name='subscribe'),
     
 ]
+handler404 = notfound_view

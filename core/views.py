@@ -38,7 +38,7 @@ def contact_view(request):
     return render(request, 'core/contact.html', {'form': form})
 
 def notfound_view(request):
-    return render(request, 'core/404.html')
+    return render(request, 'core/404.html', status=404)
 
 def cart_view(request):
     return render(request, 'core/cart.html')
