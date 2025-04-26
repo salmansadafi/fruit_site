@@ -11,6 +11,7 @@ SITE_ID = 2
 
 ALLOWED_HOSTS = ['https://fruit.liara.run','fruit.liara.run','www.fruit.liara.run']
 
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 COMPRESS_ROOT = STATIC_ROOT
