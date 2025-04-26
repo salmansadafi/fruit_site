@@ -9,7 +9,7 @@ DATABASES = {
 }
 SITE_ID = 2
 
-ALLOWED_HOSTS = ['https://fruit.liara.run','fruit.liara.run','www.fruit.liara.run']
+ALLOWED_HOSTS = ['https://fruit.liara.run//','fruit.liara.run','www.fruit.liara.run']
 
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
