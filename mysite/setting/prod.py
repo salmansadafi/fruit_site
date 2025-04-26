@@ -7,7 +7,7 @@ DEBUG =  False
 DATABASES = {
     'default': dj_database_url.config(default='sqlite:///dummy.db')
 }
-SITE_ID = 2
+SITE_ID = 3
 
 ALLOWED_HOSTS = ['https://fruit.liara.run','fruit.liara.run','www.fruit.liara.run']
 
